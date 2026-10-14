@@ -79,13 +79,26 @@
 
       <!-- Search + CTA -->
       <div class="flex items-center gap-3">
-        <label class="flex items-center gap-2 bg-primary-dark/60 border border-white/15 rounded-full pl-4 pr-1.5 py-1.5 w-56">
+        <label class="hidden xl:flex items-center gap-2 bg-primary-dark/60 border border-white/15 rounded-full pl-4 pr-1.5 py-1.5 w-56">
           <input type="text" placeholder="Cari..." class="bg-transparent text-sm text-white placeholder-white/60 outline-none w-full">
           <span class="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center text-white text-xs shrink-0">
             <i class="fa-solid fa-magnifying-glass"></i>
           </span>
         </label>
-        <a href="{{ url('/#kontak') }}" class="bg-accent hover:bg-[#c97c47] text-white text-sm font-heading font-semibold px-5 py-2.5 rounded-full transition whitespace-nowrap">
+
+        @auth
+          <a href="{{ route('dashboard') }}"
+             class="bg-white hover:bg-paper text-primary-dark text-sm font-heading font-semibold px-5 py-2.5 rounded-full transition whitespace-nowrap inline-flex items-center gap-2">
+            <i class="fa-solid fa-gauge"></i> Dashboard
+          </a>
+        @else
+          <a href="{{ route('login') }}"
+             class="bg-accent hover:bg-[#c97c47] text-white text-sm font-heading font-semibold px-5 py-2.5 rounded-full transition whitespace-nowrap inline-flex items-center gap-2">
+            <i class="fa-solid fa-right-to-bracket"></i> Masuk
+          </a>
+        @endauth
+
+        <a href="{{ url('/#kontak') }}" class="hidden md:inline-block bg-accent hover:bg-[#c97c47] text-white text-sm font-heading font-semibold px-5 py-2.5 rounded-full transition whitespace-nowrap">
           Ajukan Kerja Sama
         </a>
       </div>
@@ -114,5 +127,17 @@
     <a href="{{ url('/#layanan') }}" class="block py-2">Layanan Kerja Sama</a>
     <a href="#" class="block py-2">Mitra Industri</a>
     <a href="{{ url('/#kontak') }}" class="block py-2">Kontak Kami</a>
+
+    <div class="pt-3">
+      @auth
+        <a href="{{ route('dashboard') }}" class="block text-center bg-primary hover:bg-primary-dark text-white text-sm font-heading font-semibold px-5 py-2.5 rounded-full transition">
+          Buka Dashboard
+        </a>
+      @else
+        <a href="{{ route('login') }}" class="block text-center bg-accent hover:bg-[#c97c47] text-white text-sm font-heading font-semibold px-5 py-2.5 rounded-full transition">
+          Masuk
+        </a>
+      @endauth
+    </div>
   </div>
 </header>
