@@ -360,6 +360,14 @@ flowchart TD
 
 ---
 
+## user password dashboard
+Admin (Kepala BKK) 
+|admin@smkkosgoro.sch.id| |12345678|
+Staff (Staff Hubinas) 
+|staff@smkkosgoro.sch.id| |password|
+Industri (PIC Mitra Industri) 
+|industri@contoh.co.id| |password|
+
 ## 🚀 Instalasi & Setup
 
 ```bash
