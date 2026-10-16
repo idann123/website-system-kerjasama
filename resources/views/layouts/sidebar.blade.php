@@ -27,10 +27,16 @@
             </a>
         @endif
 
+        @if (Auth::user()->isAdmin() || Auth::user()->isStaff())
+            <a href="{{ route('perusahaan.index') }}"
+               class="flex items-center gap-3 rounded-lg px-3 py-2.5 font-medium transition {{ request()->routeIs('perusahaan.*') ? 'bg-white text-primary-dark shadow-sm' : 'text-white/80 hover:bg-white/10 hover:text-white' }}">
+                <i class="fa-solid fa-building w-4 text-center"></i> Perusahaan Mitra
+            </a>
+        @endif
+
         <p class="px-3 pb-2 pt-6 text-[11px] font-semibold uppercase tracking-wider text-white/50">Kerja Sama</p>
 
         @foreach ([
-            ['label' => 'Perusahaan Mitra', 'icon' => 'fa-solid fa-building'],
             ['label' => 'Dokumen MoU', 'icon' => 'fa-solid fa-file-signature'],
             ['label' => 'Program Kerjasama', 'icon' => 'fa-solid fa-gears'],
             ['label' => 'Rekrutmen', 'icon' => 'fa-solid fa-briefcase'],

@@ -83,8 +83,21 @@
                 </a>
             @endif
 
+            @if (Auth::user()->isAdmin() || Auth::user()->isStaff())
+                <a href="{{ route('perusahaan.index') }}"
+                   class="group rounded-2xl border border-black/5 bg-white p-5 shadow-[0_10px_30px_-24px_rgba(11,62,133,.5)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_36px_-24px_rgba(11,62,133,.6)]">
+                    <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                        <i class="fa-solid fa-building"></i>
+                    </span>
+                    <p class="mt-3 font-heading font-semibold text-ink group-hover:text-primary">Manajemen Perusahaan Mitra</p>
+                    <p class="mt-1 text-sm text-ink/55">Data profil & status perusahaan mitra.</p>
+                    <span class="mt-3 inline-flex items-center gap-1 text-sm font-medium text-primary">
+                        Buka <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </span>
+                </a>
+            @endif
+
             @foreach ([
-                ['label' => 'Perusahaan Mitra', 'desc' => 'Data profil & status perusahaan mitra.', 'icon' => 'fa-solid fa-building', 'color' => 'bg-primary/10 text-primary'],
                 ['label' => 'Dokumen MoU', 'desc' => 'Pembuatan, review, dan approval MoU.', 'icon' => 'fa-solid fa-file-signature', 'color' => 'bg-emerald-100 text-emerald-600'],
                 ['label' => 'Program Kerjasama', 'desc' => 'PKL, magang, pelatihan, kunjungan industri.', 'icon' => 'fa-solid fa-gears', 'color' => 'bg-accent/15 text-accent-dark'],
                 ['label' => 'Rekrutmen', 'desc' => 'Lowongan & pendaftaran siswa.', 'icon' => 'fa-solid fa-briefcase', 'color' => 'bg-indigo-100 text-indigo-600'],

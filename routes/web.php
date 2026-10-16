@@ -2,6 +2,7 @@
 
 use App\Enums\MouStatus;
 use App\Enums\RekrutmenStatus;
+use App\Http\Controllers\PerusahaanController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Mou;
 use App\Models\Perusahaan;
@@ -41,6 +42,12 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/pengguna', function () {
         return view('pengguna');
     })->name('pengguna.index');
+});
+
+Route::middleware(['auth', 'role:admin,staff'])->group(function () {
+    Route::patch('perusahaan/{perusahaan}/status', [PerusahaanController::class, 'updateStatus'])
+        ->name('perusahaan.status');
+    Route::resource('perusahaan', PerusahaanController::class);
 });
 
 require __DIR__.'/auth.php';
